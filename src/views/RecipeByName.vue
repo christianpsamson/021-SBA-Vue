@@ -54,7 +54,7 @@ function searchMeals() {
 }
 
 onMounted(() => {
-  const defaultKeyword = "chicken";
+  const defaultKeyword = "";
 
   // Set the keyword value
   keyword.value = defaultKeyword;
