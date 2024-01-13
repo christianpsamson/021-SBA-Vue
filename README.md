@@ -98,6 +98,12 @@ Various directives have been strategically employed accross different components
 v-model="keyword"
 ```
 
+**v-text**
+
+```html
+<h4 class="font-light text-amber-400 italic" v-text="meal.strCategory"></h4>
+```
+
 ### Vue Routing
 
 The application includes two distint routes which render different views.

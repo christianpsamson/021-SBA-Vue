@@ -12,7 +12,14 @@
   <div class="grid grid-cols-1 md:grid-cols-3 gap-5 p-8">
     <div v-for="meal of meals" :key="meal.idMeal" class="bg-white shadow">
       <img :src="meal.strMealThumb" :alt="strMeal" />
-      <h3 class="p-3 font-semibold text-sky-800">{{ meal.strMeal }}</h3>
+      <div class="p-3 flex justify-between">
+        <h3 class="text-sky-800">{{ meal.strMeal }}</h3>
+        <h4
+          class="font-light text-amber-400 italic"
+          v-text="meal.strCategory"
+        ></h4>
+      </div>
+
       <div class="p-3">
         <a
           :href="meal.strYoutube"
