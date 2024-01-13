@@ -1,7 +1,108 @@
-# Vue 3 + Vite
+# Recipe Library
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+The Recipe Library app is a versatile collection of recipes powered by an API. With this app, users can easily search for their favorite recipes by simply typing keywords such as "chicken."
 
-## Recommended IDE Setup
+![Base URL screenshot](src/assets/project.png)
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+This project was generated with <span style="color:green">VUE + VITE</span>
+
+## How to Use
+
+1.  The app automatically defaults to chicken recipes. To search for a new recipe:
+
+        - Navigate to the search bar.
+        - Enter any keyword, such as "beef."
+
+    The app will then look up various recipes and display images for inspiration.
+
+2.  It also provides links to corresponding YouTube videos for a more interactive experience.
+3.  Functionality Status:
+
+    - Search Meals: Fully operational.
+    - Meals by Letter: In progress.
+    - Meals by Ingredient: In progress.
+
+## Project Requirements
+
+### Data Binding
+
+The following are few of the components which utilized various data binding techniques. Data binding has been used atleast four times in this project.
+
+   <p>&nbsp;</p>
+
+**RecipeByName.vue**
+
+**@change**: This is an event binding that listens for the "change" event on the input element and triggers the searchMeals method when the event occurs.
+
+```javascript
+@change="searchMeals"
+```
+
+<p>&nbsp;</p>
+
+**:src**: This is a attribute binding used to dynamically set the src and alt attribute of the img element.
+
+```html
+<img :src="meal.strMealThumb" :alt="strMeal" />
+```
+
+<p>&nbsp;</p>
+
+**String Interpolations** : This is the syntax for text interpolation. It is used various times within the template to dynamically display the value.
+
+```html
+<h3 class="p-3 font-semibold text-sky-800">{{ meal.strMeal }}</h3>
+```
+
+<p>&nbsp;</p>
+
+**:href**: This is a binding used to dynamically set the href attribute of the a element.
+
+```javascript
+:href="meal.strYoutube"
+```
+
+<p>&nbsp;</p>
+
+**MenuBar.vue**
+
+```html
+<router-link
+  class="inline-flex items-center h-full px-5 text-lg font-mono font-semibold tracking-widest text-transform: uppercase"
+  :to="{ name: 'home' }"
+  >Recipe Library</router-link
+>
+```
+
+### Directives Utilization
+
+Various directives have been strategically employed accross different components to enhance the functionality and appearance of the application.
+
+**RecipeByName.vue**
+
+**v-if**
+
+```html
+<div v-if="!meals.length" class="flex justify-center text-gray-600 p-8"></div>
+```
+
+**v-for**
+
+```html
+<div v-for="meal of meals" :key="meal.idMeal" class="bg-white shadow"></div>
+```
+
+**v-model**: This is a two-way binding directive used with the input element. It binds the keyword variable to the input value.
+
+```javascript
+v-model="keyword"
+```
+
+### Vue Routing
+
+The application includes two distint routes which render different views.
+
+1. Home
+2. Search Recipes
+3. Search By Letter
+4. Search By Ingredient
