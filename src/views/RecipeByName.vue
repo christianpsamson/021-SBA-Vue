@@ -11,7 +11,7 @@
 
   <div class="grid grid-cols-1 md:grid-cols-3 gap-5 p-8">
     <div v-for="meal of meals" :key="meal.idMeal" class="bg-white shadow">
-      <img :src="meal.strMealThumb" :alt="strMeal" />
+      <img :src="meal.strMealThumb" :alt="meal.strMeal" />
       <div class="p-3 flex justify-between">
         <h3 class="text-sky-800">{{ meal.strMeal }}</h3>
         <h4
@@ -29,7 +29,14 @@
         >
       </div>
     </div>
-    <div v-if="!meals.length" class="flex justify-center text-gray-600 p-8">
+    <div v-if="meals === null" class="flex justify-center text-gray-600 p-8">
+      Loading...
+      <!-- Add a loading message or spinner while meals are being fetched -->
+    </div>
+    <div
+      v-if="!meals || (meals && meals.length === 0)"
+      class="flex justify-center text-gray-600 p-8"
+    >
       There are no recipes for that keyword.
     </div>
   </div>
@@ -47,7 +54,7 @@ function searchMeals() {
 }
 
 onMounted(() => {
-  const defaultKeyword = "Chicken";
+  const defaultKeyword = "chicken";
 
   // Set the keyword value
   keyword.value = defaultKeyword;
