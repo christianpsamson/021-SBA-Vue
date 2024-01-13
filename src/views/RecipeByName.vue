@@ -8,10 +8,24 @@
       @change="searchMeals"
     />
   </div>
-  <div>
-    <pre>
-      {{ meals }}
-    </pre>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-5 p-8">
+    <div v-for="meal of meals" :key="meal.idMeal" class="bg-white shadow">
+      <img :src="meal.strMealThumb" :alt="strMeal" />
+      <h3 class="p-3 font-semibold">{{ meal.strMeal }}</h3>
+      <div class="p-3">
+        <a
+          :href="meal.strYoutube"
+          target="_blank"
+          class="p-2 rounded-lg bg-red-500 text-white hover:bg-red-800 transition-colors"
+          >Youtube</a
+        >
+        <!-- <router-link to="/"> View </router-link> -->
+      </div>
+    </div>
+    <div v-if="!meals.length" class="flex justify-center text-gray-600 p-8">
+      There are no meals
+    </div>
   </div>
 </template>
 <script setup>
@@ -24,7 +38,6 @@ const keyword = ref("");
 const meals = computed(() => store.state.searchedMeals);
 
 function searchMeals() {
-  console.log("searchMeals function is invoked with keyword:", keyword.value);
   store.dispatch("searchMeals", keyword.value);
 }
 </script>
