@@ -3,7 +3,7 @@
     <router-link
       class="inline-flex items-center h-full px-5 text-lg font-mono font-semibold tracking-widest text-transform: uppercase"
       :to="{ name: 'home' }"
-      >Recipe Library</router-link
+      >Recipe Library + Youtube</router-link
     >
     <div class="flex items-center gap-2">
       <router-link
